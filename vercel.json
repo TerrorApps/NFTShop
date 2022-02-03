@@ -1,7 +1,7 @@
 {
   "functions": {
     "pages/api/hello.ts": {
-      "includeFiles": ["assets/0N1_logo_grey.svg", "assets/on1-banner-overlay.png"]
+      "includeFiles": "assets/**"
     }
   }
 }

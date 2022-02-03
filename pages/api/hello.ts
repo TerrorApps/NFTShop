@@ -1,11 +1,8 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
 import type { NextApiRequest, NextApiResponse } from 'next'
 import sharp from 'sharp'
-import canvas, { Canvas, createCanvas } from 'canvas'
 import axios from 'axios'
-import { getColorFromURL } from 'color-thief-node'
 import fileSystem from 'fs'
-import path from 'path'
 import Jimp from 'jimp'
 
 type Data = {
@@ -18,6 +15,11 @@ export default async function handler(
 ) {
   sharp.cache(false);
   var tokenId = req.query["tokenId"]
+  if (tokenId.length < 4) {
+    for (let i = tokenId.length; i < 4; i++) {
+      tokenId = "0" + tokenId
+    }
+  }
   var fileName = `on1_${tokenId}.png`
   var imageUrl = `https://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`
   if (fileSystem.existsSync(fileName)) {
@@ -31,12 +33,6 @@ export default async function handler(
     return
   } else {
     console.log("file does not exist")
-  }
-
-  if (tokenId.length < 4) {
-    for (let i = tokenId.length; i < 4; i++) {
-      tokenId = "0" + tokenId
-    }
   }
   Jimp.read(imageUrl, async function (err, image) {
     var hex = image.getPixelColor(1, 1)
@@ -55,11 +51,8 @@ export default async function handler(
     var banner = await sharp("0n1-banner-overlay.png").resize({
       fit: sharp.fit.contain,
       width: 1170
-    })
-  
-    .png().toBuffer()
-    var dominantColor = await getColorFromURL(imageUrl)
-    var background = await sharp({
+    }).png().toBuffer()
+    await sharp({
       create: {
         width: 1170,
         height: 2532,

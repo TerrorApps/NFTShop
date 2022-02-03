@@ -20,7 +20,7 @@ export default async function handler(
       tokenId = "0" + tokenId
     }
   }
-  var fileName = `on1_${tokenId}.png`
+  var fileName = `0n1_${tokenId}.png`
   var imageUrl = `https://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`
   await Jimp.read(imageUrl, async function (err, image) {
     console.log("finding image color")

@@ -5,6 +5,7 @@ import axios from 'axios'
 import fileSystem from 'fs'
 import Jimp from 'jimp'
 import path from 'path'
+import { tmpdir } from 'os'
 
 type Data = {
   name: string
@@ -21,7 +22,7 @@ export default async function handler(
       tokenId = "0" + tokenId
     }
   }
-  var fileName = `assets/0n1_${tokenId}.png`
+  var fileName = `${tmpdir}/0n1_${tokenId}.png`
   var imageUrl = `https://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`
   await Jimp.read(imageUrl, async function (err, image) {
     console.log("finding image color")

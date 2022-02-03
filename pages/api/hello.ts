@@ -37,9 +37,9 @@ export default async function handler(
       background: { r: 243, g: 243, b: 4 }
     }).toBuffer()
     console.log("sharping 0n1")
-    var logo = await sharp("./0N1_logo_grey.svg").png().toBuffer()
+    var logo = await sharp("./assets/0N1_logo_grey.svg").png().toBuffer()
     console.log("found logo grey")
-    var banner = await sharp("./0n1-banner-overlay.png").resize({
+    var banner = await sharp("./assets/0n1-banner-overlay.png").resize({
       fit: sharp.fit.contain,
       width: 1170
     }).png().toBuffer()

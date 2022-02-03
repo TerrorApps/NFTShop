@@ -23,6 +23,7 @@ export default async function handler(
   var fileName = `on1_${tokenId}.png`
   var imageUrl = `https://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`
   await Jimp.read(imageUrl, async function (err, image) {
+    console.log("finding image color")
     var hex = image.getPixelColor(1, 1)
     var rgb = Jimp.intToRGBA(hex)
     var input = await axios(
@@ -35,11 +36,14 @@ export default async function handler(
       height: 1170,
       background: { r: 243, g: 243, b: 4 }
     }).toBuffer()
+    console.log("sharping 0n1")
     var logo = await sharp("0N1_logo_grey.svg").png().toBuffer()
+    console.log("found logo grey")
     var banner = await sharp("0n1-banner-overlay.png").resize({
       fit: sharp.fit.contain,
       width: 1170
     }).png().toBuffer()
+    console.log("sharping banner")
     await sharp({
       create: {
         width: 1170,
@@ -62,15 +66,19 @@ export default async function handler(
       input: banner,
       gravity: "south"
     }
-  ]).png().toFile(fileName)
+    ]).png().toFile(fileName)
+
+    console.log("sharp created image")
     
     var stat = fileSystem.statSync(fileName);
     res.writeHead(200, {
       'Content-Type': 'image/png',
       'Content-Length': stat.size
-  });
+    });
+    console.log("set file content lenght")
     var readStream = fileSystem.createReadStream(fileName);
     readStream.pipe(res);
+    console.log("finished file stuff")
     res.status(200)
   })
 }

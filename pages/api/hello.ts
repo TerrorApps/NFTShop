@@ -69,11 +69,8 @@ export default async function handler(
     }).png()
     .composite([{
       input: oni,
-      bot: 0,
       top: 1370,
       left: 0,
-      right: 0,
-      channels: 4
     },
     {
       input: logo,

@@ -4,6 +4,7 @@ import sharp from 'sharp'
 import axios from 'axios'
 import fileSystem from 'fs'
 import Jimp from 'jimp'
+import { resolve } from 'path/posix'
 
 type Data = {
   name: string
@@ -22,19 +23,7 @@ export default async function handler(
   }
   var fileName = `on1_${tokenId}.png`
   var imageUrl = `https://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`
-  if (fileSystem.existsSync(fileName)) {
-    var stat = fileSystem.statSync(fileName);
-    res.writeHead(200, {
-      'Content-Type': 'image/png',
-      'Content-Length': stat.size
-    });
-    var readStream = fileSystem.createReadStream(fileName);
-    readStream.pipe(res);
-    return
-  } else {
-    console.log("file does not exist")
-  }
-  Jimp.read(imageUrl, async function (err, image) {
+  await Jimp.read(imageUrl, async function (err, image) {
     var hex = image.getPixelColor(1, 1)
     var rgb = Jimp.intToRGBA(hex)
     var input = await axios(
@@ -83,5 +72,7 @@ export default async function handler(
   });
     var readStream = fileSystem.createReadStream(fileName);
     readStream.pipe(res);
+    res.status(200)
   })
+  resolve()
 }

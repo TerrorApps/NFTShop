@@ -4,7 +4,6 @@ import sharp from 'sharp'
 import axios from 'axios'
 import fileSystem from 'fs'
 import Jimp from 'jimp'
-import { resolve } from 'path/posix'
 
 type Data = {
   name: string
@@ -74,5 +73,4 @@ export default async function handler(
     readStream.pipe(res);
     res.status(200)
   })
-  resolve()
 }

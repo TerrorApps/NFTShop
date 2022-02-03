@@ -4,6 +4,7 @@ import sharp from 'sharp'
 import axios from 'axios'
 import fileSystem from 'fs'
 import Jimp from 'jimp'
+import path from 'path'
 
 type Data = {
   name: string
@@ -37,9 +38,11 @@ export default async function handler(
       background: { r: 243, g: 243, b: 4 }
     }).toBuffer()
     console.log("sharping 0n1")
-    var logo = await sharp("./assets/0N1_logo_grey.svg").png().toBuffer()
+    var logoFilePath = path.resolve('.', 'assets/0N1_logo_grey.svg')
+    var logo = await sharp(logoFilePath).png().toBuffer()
     console.log("found logo grey")
-    var banner = await sharp("./assets/0n1-banner-overlay.png").resize({
+    var bannerFilePath = path.resolve('.', 'assets/0n1-banner-overlay.png')
+    var banner = await sharp(bannerFilePath).resize({
       fit: sharp.fit.contain,
       width: 1170
     }).png().toBuffer()

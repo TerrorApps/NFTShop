@@ -34,11 +34,7 @@ export default function Home() {
     	<input type="text" className="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" name="tokenid" placeholder="Token ID" required autoFocus/>
 	    <button className="px-8 rounded-r-lg bg-yellow-400  text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r">{ loading ? "Thinking......." : "Press This Button" }</button>
 	</form>
-  <div className="pt-4 pl-4">
-    <a href="https://nowpayments.io/donation?api_key=A1Q3P0C-0YNMDP1-MYYER0B-H5BFPY9" target="_blank">
-      <img src="https://nowpayments.io/images/embeds/donation-button-white.svg" alt="Cryptocurrency & Bitcoin donation button by NOWPayments" />
-    </a>
-  </div>
+    <span className="pt-4 pl-4 block text-green-500">Send any donations to BokuWaTaka.eth ❤️ </span>
   {value != "value" && !loading && <img className="object-cover h-2532 w-1170 ..." src={value} />}
 </div>
   );

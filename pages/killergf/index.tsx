@@ -12,7 +12,7 @@ export default function Azuki() {
   <div>
           <style jsx global>{`
   body {
-    background: #d31c3c;
+    background: #f9f7f7;
   }
 `}</style>
     <div className="pt-4 pl-4">
@@ -41,7 +41,7 @@ export default function Azuki() {
     	<input type="text" className="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" name="tokenid" placeholder="Token ID" required autoFocus/>
 	    <button className="px-8 rounded-r-lg bg-yellow-400  text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r">{ loading ? "Thinking......." : "Press This Button" }</button>
 	</form>
-    <span className="pt-4 pl-4 block text-slate-50">Send any donations to BokuWaTaka.eth ❤️ </span>
+    <span className="pt-4 pl-4 block text-red-300">Send any donations to BokuWaTaka.eth ❤️ </span>
     { failedFetch ? <span className="pt-4 pl-4 block text-white-500"> Token is invalid. </span> : <div></div>}
     { value != "value" && !loading && <img className="object-cover h-2532 w-1170 ..." src={value} />}
 </div>

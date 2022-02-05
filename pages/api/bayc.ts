@@ -17,62 +17,64 @@ export default async function handler(
 ) {
   sharp.cache(false);
   var tokenId = req.query["tokenId"]
-  if (Number(tokenId) > 7777 || Number(tokenId) < 1) {
-      console.log("its invalid")
+  if (Number(tokenId) > 9999 || Number(tokenId) < 1) {
       res.status(400).end()
   } else {
     var fileName = `${tmpdir}/bayc_${tokenId}.png`
-    var traitsRes = await fetch(`https://gateway.pinata.cloud/ipfs/QmR5NAV7vCi5oobK2wKNKcM5QAyCCzCg2wysZXwhCYbBLs/${tokenId}`)
-    var traitsData = await traitsRes.json()
-    var imageUrl = traitsData["image"]
-    await Jimp.read(imageUrl, async function (err, image) {
-        var hex = image.getPixelColor(1, 1)
-        var rgb = Jimp.intToRGBA(hex)
-        var background = {r: rgb.r, g: rgb.g, b: rgb.b }
+    var imageUrl = `https://ikzttp.mypinata.cloud/ipfs/QmYDvPAXtiJg7s8JdRBSLWdgSphQdac8j1YuQNNxcGE1hg/${tokenId}.png`
+    var traitRes = await fetch(`https://ipfs.io/ipfs/QmeSjSinHpPnmXmspMjwiXyN6zS4E9zccariGR3jxcaWtq/${tokenId}`)
+    var traits = await traitRes.json()
+    var imageAddress = traits["image"].split("//")[1]
+    var imageUrl = `https://ipfs.io/ipfs/${imageAddress}`
 
+    await Jimp.read(imageUrl, async function (err, image) {
+        var hex = image.getPixelColor(30, 30)
+        var rgb = Jimp.intToRGBA(hex)
         var input = await axios(
         {url: imageUrl,
         responseType: "arraybuffer"})
         var buffer = input.data as Buffer
-        var killergf = await sharp(buffer).resize({
+        var bayc = await sharp(buffer).resize({
         fit: sharp.fit.contain,
-        width: 866,
-        height: 1874,
-        background: background
+        width: 1170,
+        height: 1170,
+        background: { r: rgb.r, g: rgb.g, b: rgb.b }
         }).toBuffer()
-        var logoFilePath = path.resolve('.', 'assets/logo.c6f172e5.png')
+        var logoFilePath = path.resolve('.', 'assets/bayc-logo-z.png')
         var logo = await sharp(logoFilePath).resize({
             fit: sharp.fit.contain,
-            width: 800,
-            height: 200,
-            background: background
+            width: 1000,
+            height: 300,
+            background: { r: rgb.r, g: rgb.g, b: rgb.b }
         }).png().toBuffer()
         await sharp({
         create: {
-            width: 866,
-            height: 1874,
+            width: 1170,
+            height: 2532,
             channels: 4,
-            background: background
+            background: { r: rgb.r, g: rgb.g, b: rgb.b }
         }
-        }).png() //5569
+        }).png()
         .composite([{
-        input: killergf,
-        top: 490,
+        input: bayc,
+        top: 1370,
         left: 0,
         },
         {
         input: logo,
-        top: 600,
-        left: 25
+        top: 750,
+        left: 75
         }
         ]).png().toFile(fileName)
 
+        console.log("sharp created image")
         
         var stat = fileSystem.statSync(fileName);
         res.writeHead(200, {
         'Content-Type': 'image/png',
         'Content-Length': stat.size
         });
+        console.log("set file content lenght")
         var readStream = fileSystem.createReadStream(fileName);
         readStream.pipe(res);
         console.log("finished file stuff")

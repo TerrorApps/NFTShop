@@ -6,12 +6,7 @@ import type { AppProps /*, AppContext */ } from 'next/app'
 function MyApp({ Component, pageProps }: AppProps ) {
   return(
   <>
-    <Component {...pageProps} />;
-    <style jsx global>{`
-  body {
-    background: #000;
-  }
-`}</style>
+    <Component {...pageProps} />
   </>
   )
 }

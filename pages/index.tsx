@@ -1,35 +1,49 @@
 import Head from 'next/head'
 import { useState } from 'react'
 import Image from 'next/image'
+import Link from 'next/link'
 
 export default function Home() {
   const [value, setValue] = useState("value")
   const [loading, setLoading] = useState(false)
   var image = null;
   return (
-  <div>
-    <div className="pt-4 pl-4">
-      <Image className="pt-2 pl-2" src="https://assets.website-files.com/60ef399b992671a8275e6cff/61cd2919c237ed3643da09b6_0n1logo.svg" alt="" width="72" height="72" />
+  // <div className="py-12 bg-white">
+  //   <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+  //     <Link href="/0n1">
+  //       <a>0n1</a>
+  //     </Link>
+  //     <Link href="/azuki">
+  //       <a>Azuki</a>
+  //     </Link>
+  //     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+  //     0n1
+  //     </button>
+  //     <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded">
+  //     Azuki
+  //     </button>
+  //   </div>
+  // </div>
+  <div className="bg-gray-50">
+  <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+    <h2 className="text-3xl font-extrabold tracking-tight text-gray-900 sm:text-4xl">
+      <span className="block">NFT Phone Wallpaper Regenerator</span>
+      <span className="block text-indigo-600">Click on any project.</span>
+      <span className="block text-indigo-600">Send any donations to BokuWaTaka.eth ❤️ </span>
+    </h2>
+    <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
+      <div className="inline-flex rounded-md shadow">
+        <Link href="/0n1">
+          <a className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">0n1 Phone</a>
+        </Link>
+      </div>
+      <div className="ml-3 inline-flex rounded-md shadow">
+        <Link href="/azuki">
+          <a className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">Azuki Phone</a>
+        </Link>
+      </div>
     </div>
-  	<form className="m-4 flex"
-      onSubmit={async (e: React.SyntheticEvent) => {
-        e.preventDefault();
-        const target = e.target as typeof e.target & {
-          tokenid: { value: string };
-        };
-        const tokenId = target.tokenid.value;
-        setLoading(true)
-        var res = await fetch(`/api/hello?tokenId=${tokenId}`)
-        var blob = await res.blob()
-        var urlCreator = window.URL || window.webkitURL
-        setValue(urlCreator.createObjectURL(blob))
-        setLoading(false)
-    }}
-    >
-    	<input type="text" className="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" name="tokenid" placeholder="Token ID" required autoFocus/>
-	    <button className="px-8 rounded-r-lg bg-yellow-400  text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r">{ loading ? "Thinking......." : "Press This Button" }</button>
-	</form>
-  {value != "value" && !loading && <img className="object-cover h-2532 w-1170 ..." src={value} />}
+  </div>
 </div>
-  );
+  )
 }

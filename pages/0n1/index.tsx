@@ -15,7 +15,7 @@ export default function Home() {
   }
 `}</style>
     <div className="pt-4 pl-4">
-      <Image className="pt-2 pl-2" src="assets/bayc-logo-z.png" alt="" width="72" height="72" />
+    <Image className="pt-2 pl-2" src="https://assets.website-files.com/60ef399b992671a8275e6cff/61cd2919c237ed3643da09b6_0n1logo.svg" alt="" width="72" height="72" />
     </div>
   	<form className="m-4 flex"
       onSubmit={async (e: React.SyntheticEvent) => {

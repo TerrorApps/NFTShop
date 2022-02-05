@@ -17,7 +17,7 @@ export default async function handler(
 ) {
   sharp.cache(false);
   var tokenId = req.query["tokenId"]
-  if (Number(tokenId) > 7777 || Number(tokenId) < 1) {
+  if (Number(tokenId) < 1) {
       console.log("its invalid")
       res.status(400).end()
   } else {

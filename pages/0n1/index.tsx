@@ -35,7 +35,7 @@ export default function Home() {
 	    <button className="px-8 rounded-r-lg bg-yellow-400  text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r">{ loading ? "Thinking......." : "Press This Button" }</button>
 	</form>
     <span className="pt-4 pl-4 block text-green-500">Send any donations to BokuWaTaka.eth ❤️ </span>
-  {value != "value" && !loading && <img className="object-cover h-2532 w-1170 ..." src={value} download="0n1"></img>}
+  {value != "value" && !loading && <img className="object-cover h-2532 w-1170 ..." src={value}></img>}
 </div>
   );
 }

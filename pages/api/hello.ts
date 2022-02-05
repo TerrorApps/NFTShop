@@ -22,7 +22,7 @@ export default async function handler(
       tokenId = "0" + tokenId
     }
   }
-  if (Number(tokenId) > 9999 || Number(tokenId) < 1) {
+  if (Number(tokenId) > 7777 || Number(tokenId) < 1) {
     console.log("its invalid")
     res.status(400).end()
 } else {

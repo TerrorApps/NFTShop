@@ -32,7 +32,7 @@ export default async function handler(
     var imageUrl = resJson["image"]
 
     await Jimp.read(imageUrl, async function (err, image) {
-      var hex = image.getPixelColor(1, 1)
+      var hex = image.getPixelColor(1, 100)
       var rgb = Jimp.intToRGBA(hex)
       var input = await axios(
         {url: imageUrl,

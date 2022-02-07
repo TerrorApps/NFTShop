@@ -42,6 +42,16 @@ export default function Home() {
           <a className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">uwucrew</a>
         </Link>
       </div>
+      <div className="ml-3 inline-flex rounded-md shadow">
+        <Link href="/deadfellaz">
+          <a className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">deadfellaz</a>
+        </Link>
+      </div>
+      <div className="ml-3 inline-flex rounded-md shadow">
+        <Link href="/fishyfam">
+          <a className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">fishyfam</a>
+        </Link>
+      </div>
     </div>
   </div>
 </div>

@@ -20,25 +20,29 @@ export default function Home() {
   <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
     <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
       <div className="inline-flex rounded-md shadow">
-        <Link href="/0n1">
-          <a className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">0n1</a>
-        </Link>
-      </div>
-      <div className="ml-3 inline-flex rounded-md shadow">
-        <Link href="/azuki">
-          <a className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">Azuki</a>
-        </Link>
-      </div>
-      <div className="ml-3 inline-flex rounded-md shadow">
-        <Link href="/killergf">
-          <a className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">Killergf</a>
-        </Link>
-      </div>
-      <div className="ml-3 inline-flex rounded-md shadow">
-        <Link href="/bayc">
-          <a className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">BAYC</a>
-        </Link>
-      </div>
+          <Link href="/0n1">
+            <a className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">0n1</a>
+          </Link>
+        </div>
+        <div className="ml-3 inline-flex rounded-md shadow">
+          <Link href="/azuki">
+            <a className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">Azuki</a>
+          </Link>
+        </div>
+        <div className="ml-3 inline-flex rounded-md shadow">
+          <Link href="/killergf">
+            <a className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">Killergf</a>
+          </Link>
+        </div>
+        <div className="ml-3 inline-flex rounded-md shadow">
+          <Link href="/bayc">
+            <a className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">BAYC</a>
+          </Link>
+        </div>
+    </div>
+  </div>
+  <div className="max-w-7xl mx-auto py-12 px-4 sm:px-6 lg:py-16 lg:px-8 lg:flex lg:items-center lg:justify-between">
+    <div className="mt-8 flex lg:mt-0 lg:flex-shrink-0">
       <div className="ml-3 inline-flex rounded-md shadow">
         <Link href="/uwucrew">
           <a className="inline-flex items-center justify-center px-5 py-3 border border-transparent text-base font-medium rounded-md text-white bg-indigo-600 hover:bg-indigo-700">uwucrew</a>

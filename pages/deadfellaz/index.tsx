@@ -49,7 +49,7 @@ export default function Azuki() {
 	    <button className="px-8 rounded-r-lg bg-yellow-400  text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r">{ loading ? "Thinking......." : "Press This Button" }</button>
 	</form>
     <span className="pt-4 block text-green-400">Send any donations to BokuWaTaka.eth ❤️ </span>
-    <a href="https://twitter.com/BokuWaTakaE?ref_src=twsrc%5Etfw" className="twitter-follow-button" data-show-count="false">Follow @BokuWaTakaE</a>
+    <a href="https://twitter.com/BokuWaTakaE?ref_src=twsrc%5Etfw" className="twitter-follow-button text-slate-200" data-show-count="false">Follow @BokuWaTakaE</a>
     <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>
     { failedFetch ? <span className="pt-4 pl-4 block text-green-400"> Token ID is invalid. </span> : <div></div>}
     { value != "value" && !loading && <img className="object-cover h-2532 w-1170 ..." src={value} />}

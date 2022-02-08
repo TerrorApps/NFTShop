@@ -22,7 +22,9 @@ export default async function handler(
       res.status(400).end()
   } else {
     var fileName = `${tmpdir}/azuki_${tokenId}.png`
-    var imageUrl = `https://ikzttp.mypinata.cloud/ipfs/QmYDvPAXtiJg7s8JdRBSLWdgSphQdac8j1YuQNNxcGE1hg/${tokenId}.png`
+    var dataRes = await fetch(`https://ikzttp.mypinata.cloud/ipfs/QmQFkLSQysj94s5GvTHPyzTxrawwtjgiiYS2TBLgrvw8CW/${tokenId}`)
+    var dataJson = await dataRes.json()
+    var imageUrl = dataJson["image"]
     await Jimp.read(imageUrl, async function (err, image) {
         console.log("finding image color")
         var hex = image.getPixelColor(1, 1)
@@ -37,16 +39,11 @@ export default async function handler(
         height: 1170,
         background: { r: 243, g: 243, b: 4 }
         }).toBuffer()
-        console.log("sharping azuki")
-        var logoFilePath = path.resolve('.', 'assets/azuki_logo.svg')
+        var background = dataJson["attributes"]
+          .find((attribute: { "trait_type": string }) => attribute["trait_type"] == "Background")["value"]
+        var logoName = background.includes("White") ? "azuki_red_logo.svg" : "Azuki_logo.svg"
+        var logoFilePath = path.resolve('.', `assets/${logoName}`)
         var logo = await sharp(logoFilePath).png().toBuffer()
-        console.log("found logo grey")
-        var bannerFilePath = path.resolve('.', 'assets/0n1-banner-overlay.png')
-        var banner = await sharp(bannerFilePath).resize({
-        fit: sharp.fit.contain,
-        width: 1170
-        }).png().toBuffer()
-        console.log("sharping banner")
         await sharp({
         create: {
             width: 1170,

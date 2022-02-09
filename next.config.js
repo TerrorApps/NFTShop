@@ -8,7 +8,8 @@ module.exports = {
       "herodev.mypinata.cloud",
       "api.deadfellaz.io",
       "api.uwucrew.art",
-      "gateway.pinata.cloud"
+      "gateway.pinata.cloud",
+      "ipfs.io"
     ],
   }
 }

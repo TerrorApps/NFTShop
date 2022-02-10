@@ -141,7 +141,6 @@ export default function Home() {
         </form>
          </div>
      ) : (<div></div>)} 
-    }
     <span className="pt-4 block text-green-500">Send any donations to BokuWaTaka.eth ❤️ </span>
     <a href="https://twitter.com/BokuWaTakaE?ref_src=twsrc%5Etfw" className="twitter-follow-button" data-show-count="false">Follow @BokuWaTakaE</a>
     <script async src="https://platform.twitter.com/widgets.js" charSet="utf-8"></script>

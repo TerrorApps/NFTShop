@@ -28,7 +28,8 @@ export default async function handler(
 } else {
     var fileName = `${tmpdir}/0n1_${tokenId}.png`
     var imageUrl = `https://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`
-    var dataRes = await fetch(`https://ipfs.io/ipfs/QmXgSuLPGuxxRuAana7JdoWmaS25oAcXv3x2pYMN9kVfg3/${req.query["tokenId"]}`)
+    var removeLeadingZero = +tokenId
+    var dataRes = await fetch(`https://ipfs.io/ipfs/QmXgSuLPGuxxRuAana7JdoWmaS25oAcXv3x2pYMN9kVfg3/${removeLeadingZero}`)
     var traitsData = await dataRes.json()
     console.log("traits")
     console.log(traitsData)
@@ -64,7 +65,7 @@ export default async function handler(
         fit: sharp.fit.contain,
         width: 1170
       }).png().toBuffer()
-      var oni = await sharp(buffer).resize({
+      await sharp(buffer).resize({
         fit: sharp.fit.contain,
         width: 1170,
         height: 1170,

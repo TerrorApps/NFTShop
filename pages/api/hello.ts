@@ -28,7 +28,8 @@ export default async function handler(
 } else {
     var fileName = `${tmpdir}/0n1_${tokenId}.png`
     var imageUrl = `https://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`
-    var traitsRes = await fetch(`https://ipfs.io/ipfs/QmXgSuLPGuxxRuAana7JdoWmaS25oAcXv3x2pYMN9kVfg3/${req.query["tokenId"]}`)
+    var removeLeadingZero = +tokenId
+    var traitsRes = await fetch(`https://ipfs.io/ipfs/QmXgSuLPGuxxRuAana7JdoWmaS25oAcXv3x2pYMN9kVfg3/${removeLeadingZero}`)
     var traitsData = await traitsRes.json()
     console.log("traits")
     console.log(traitsData)

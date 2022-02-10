@@ -9,7 +9,8 @@ module.exports = {
       "api.deadfellaz.io",
       "api.uwucrew.art",
       "gateway.pinata.cloud",
-      "ipfs.io"
+      "ipfs.io",
+      "ikzttp.mypinata.cloud"
     ],
   }
 }

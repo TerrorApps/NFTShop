@@ -25,6 +25,7 @@ export default async function handler(
     var dataRes = await fetch(`https://ikzttp.mypinata.cloud/ipfs/QmQFkLSQysj94s5GvTHPyzTxrawwtjgiiYS2TBLgrvw8CW/${tokenId}`)
     var dataJson = await dataRes.json()
     var imageUrl = dataJson["image"]
+    console.log(`image URL: ${imageUrl}`)
     await Jimp.read(imageUrl, async function (err, image) {
         console.log("finding image color")
         var hex = image.getPixelColor(1, 1)

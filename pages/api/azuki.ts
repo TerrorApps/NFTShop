@@ -51,8 +51,9 @@ export default async function handler(
         var background = dataJson["attributes"]
           .find((attribute: { "trait_type": string }) => attribute["trait_type"] == "Background")["value"]
         console.log(`6`)
-        var logoName = background.includes("White") ? "azuki_red_logo.svg" : "Azuki_logo.svg"
+        var logoName = background.includes("White") ? "azuki_red_logo.svg" : "azuki_logo.svg"
         console.log(`7`)
+        console.log(`logo name ${logoName}`)
         var logoFilePath = path.resolve('.', `assets/${logoName}`)
         console.log(`8`)
         var logo = await sharp(logoFilePath).png().toBuffer()

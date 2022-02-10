@@ -8,6 +8,7 @@ export default function Home() {
   const [failedFetch, setFailedFetch] = useState(false)
   const [twitterBanner, setTwitterBanner] = useState(false)
   const [phoneScreen, setPhoneScreen] = useState(true)
+  const [izzyRoni, setIzzyRoni] = useState(false)
   const [buttonColor, setButtonColor] = useState()
 
   var image = null;
@@ -30,14 +31,19 @@ export default function Home() {
     </div>
     <div className="pt-4">
         <button 
-            onClick={() => { setTwitterBanner(true); setPhoneScreen(false) }}
+            onClick={() => { setTwitterBanner(true); setPhoneScreen(false); setIzzyRoni(false) }}
             className="pt-4 pl-4 bg-green-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-green-700">
             TwitterBanner
         </button>
         <button 
-            onClick={() => { setPhoneScreen(true); setTwitterBanner(false) }}
+            onClick={() => { setPhoneScreen(true); setTwitterBanner(false); setIzzyRoni(false); }}
             className="pt-4 pl-4 bg-green-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-green-700">
             Phone Screen
+        </button>
+        <button 
+            onClick={() => { setPhoneScreen(false); setTwitterBanner(false); setIzzyRoni(true);}}
+            className="pt-4 pl-4 bg-green-500 hover:bg-red-700 text-white font-bold py-2 px-4 border border-green-700">
+            Izzy R0N1
         </button>
     </div>
     { phoneScreen ?
@@ -68,8 +74,37 @@ export default function Home() {
                 <button className="px-8 rounded-r-lg bg-yellow-400  text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r">{ loading ? "Thinking......." : "Press This Button" }</button>
             </form>
          </div>
-     ) : 
+     ) : (<div></div>)}
+    { izzyRoni ?
      (
+         <div>
+             <p className="pt-4 text-2xl text-green-500 ...">Izzy R0N1</p>
+            <form className="flex"
+                onSubmit={async (e: React.SyntheticEvent) => {
+                e.preventDefault();
+                const target = e.target as typeof e.target & {
+                    tokenid: { value: string };
+                };
+                const tokenId = target.tokenid.value;
+                setLoading(true)
+                setFailedFetch(false)
+                var res = await fetch(`/api/0n1/izzy?tokenId=${tokenId}`)
+                setLoading(false)
+                if (res.status == 400) {
+                    setFailedFetch(true)
+                } else {
+                    var blob = await res.blob()
+                    var urlCreator = window.URL || window.webkitURL
+                    setValue(urlCreator.createObjectURL(blob))
+                }
+            }}
+            >
+                <input type="text" className="rounded-l-lg p-4 border-t mr-0 border-b border-l text-gray-800 border-gray-200 bg-white" name="tokenid" placeholder="Token ID" required autoFocus/>
+                <button className="px-8 rounded-r-lg bg-yellow-400  text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r">{ loading ? "Thinking......." : "Press This Button" }</button>
+            </form>
+         </div>
+     ) : (<div></div>)}
+     { twitterBanner ? (
          <div>
         <p className="pt-4 text-2xl text-green-500 ...">Twitch Banner</p>
         <form className="flex"
@@ -105,7 +140,7 @@ export default function Home() {
         <button className="px-8 rounded-r-lg bg-yellow-400 text-gray-800 font-bold p-4 uppercase border-yellow-500 border-t border-b border-r">{ loading ? "Thinking......." : "Press This Button" }</button>
         </form>
          </div>
-     ) 
+     ) : (<div></div>)} 
     }
     <span className="pt-4 block text-green-500">Send any donations to BokuWaTaka.eth ❤️ </span>
     <a href="https://twitter.com/BokuWaTakaE?ref_src=twsrc%5Etfw" className="twitter-follow-button" data-show-count="false">Follow @BokuWaTakaE</a>

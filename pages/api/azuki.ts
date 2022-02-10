@@ -27,6 +27,7 @@ export default async function handler(
     var imageUrl = dataJson["image"]
     console.log(`image URL: ${imageUrl}`)
     await Jimp.read(imageUrl, async function (err, image) {
+        console.log(`error: ${err}`)
         console.log("finding image color")
         var hex = image.getPixelColor(1, 1)
         var rgb = Jimp.intToRGBA(hex)

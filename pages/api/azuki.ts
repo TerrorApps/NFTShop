@@ -23,7 +23,7 @@ export default async function handler(
   } else {
     var fileName = `${tmpdir}/azuki_${tokenId}.png`
     var dataRes = await fetch(`https://ikzttp.mypinata.cloud/ipfs/QmQFkLSQysj94s5GvTHPyzTxrawwtjgiiYS2TBLgrvw8CW/${tokenId}`)
-    var imageUrl = `https://ikzttp.mypinata.cloud/ipfs/QmYDvPAXtiJg7s8JdRBSLWdgSphQdac8j1YuQNNxcGE1hg/${tokenId}`
+    var imageUrl = `https://ikzttp.mypinata.cloud/ipfs/QmYDvPAXtiJg7s8JdRBSLWdgSphQdac8j1YuQNNxcGE1hg/${tokenId}.png`
     var dataJson = await dataRes.json()
     console.log(`image URL: ${imageUrl}`)
     await Jimp.read(imageUrl, async function (err, image) {

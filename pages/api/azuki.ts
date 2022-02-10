@@ -29,23 +29,35 @@ export default async function handler(
     await Jimp.read(imageUrl, async function (err, image) {
         console.log(`error: ${err}`)
         console.log("finding image color")
+        console.log(`the image: ${image}`)
         var hex = image.getPixelColor(1, 1)
+        console.log(`1`)
+
         var rgb = Jimp.intToRGBA(hex)
+        console.log(`2`)
         var input = await axios(
         {url: imageUrl,
         responseType: "arraybuffer"})
+        console.log(`3`)
         var buffer = input.data as Buffer
+        console.log(`4`)
         var oni = await sharp(buffer).resize({
         fit: sharp.fit.contain,
         width: 1170,
         height: 1170,
         background: { r: 243, g: 243, b: 4 }
         }).toBuffer()
+        console.log(`5`)
         var background = dataJson["attributes"]
           .find((attribute: { "trait_type": string }) => attribute["trait_type"] == "Background")["value"]
-        var logoName = background.includes("White") ? "azuki_red_logo.svg" : "Azuki_logo.svg"
+        console.log(`6`)
+        var logoName = background.includes("White") ? "azuki_red_logo.svg" : "azuki_logo.svg"
+        console.log(`7`)
+        console.log(`logo name ${logoName}`)
         var logoFilePath = path.resolve('.', `assets/${logoName}`)
+        console.log(`8`)
         var logo = await sharp(logoFilePath).png().toBuffer()
+        console.log(`9`)
         await sharp({
         create: {
             width: 1170,

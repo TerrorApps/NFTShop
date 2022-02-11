@@ -59,7 +59,7 @@ export default function Home() {
                 const tokenId = target.tokenid.value;
                 setLoading(true)
                 setFailedFetch(false)
-                var res = await fetch(`/api/hello?tokenId=${tokenId}`)
+                var res = await fetch(`/api/0n1/phonescreen?tokenId=${tokenId}`)
                 setLoading(false)
                 if (res.status == 400) {
                     setFailedFetch(true)
@@ -120,9 +120,6 @@ export default function Home() {
         const tokenId3 = target.tokenid3.value;
         setLoading(true)
         setFailedFetch(false)
-        console.log(tokenId)
-        console.log(tokenId2)
-        console.log(tokenId3)
         var res = await fetch(`/api/0n1/twitter_banner?tokenId=${tokenId}&tokenId2=${tokenId2}&tokenId3=${tokenId3}`)
         setLoading(false)
         if (res.status == 400) {

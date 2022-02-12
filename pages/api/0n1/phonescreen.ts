@@ -33,17 +33,15 @@ export default async function handler(
     var traitsData = await traitsRes.json()
     console.log("traits")
     console.log(traitsData)
-    console.log(imageUrl)
     var input = await axios(
       {url: imageUrl,
       responseType: "arraybuffer"})
-    console.log("casting to buffer")
     var buffer = input.data as Buffer
-    console.log("using sharp for oni")
     var oni = await sharp(buffer).resize({
       fit: sharp.fit.contain,
       width: 1170,
       height: 1170,
+      background: { r: 243, g: 243, b: 4 }
     }).toBuffer()
     var logoFilePath = path.resolve('.', 'assets/0N1_logo_grey.svg')
     var logo = await sharp(logoFilePath).png().toBuffer()
@@ -52,9 +50,7 @@ export default async function handler(
       fit: sharp.fit.contain,
       width: 1170
     }).png().toBuffer()
-    await Jimp.read(oni, async function (err, image) {
-      console.log(`error: ${err}`)
-      console.log("retrieved image")
+    await Jimp.read(buffer, async function (err, image) {
       var hex = image.getPixelColor(1, 1)
       var rgb = Jimp.intToRGBA(hex)
       await sharp({
@@ -91,7 +87,5 @@ export default async function handler(
       readStream.pipe(res);
       res.status(200)
     })
-    console.log("something happened")
-    res.status(500)
   }
 }

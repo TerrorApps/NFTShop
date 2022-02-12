@@ -33,6 +33,7 @@ export default async function handler(
     var traitsData = await traitsRes.json()
     console.log("traits")
     console.log(traitsData)
+    console.log(imageUrl)
     var input = await axios(
       {url: imageUrl,
       responseType: "arraybuffer"})

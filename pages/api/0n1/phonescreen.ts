@@ -36,20 +36,23 @@ export default async function handler(
     var input = await axios(
       {url: imageUrl,
       responseType: "arraybuffer"})
+    console.log("casting to buffer")
     var buffer = input.data as Buffer
     var oni = await sharp(buffer).resize({
       fit: sharp.fit.contain,
       width: 1170,
       height: 1170,
-      background: { r: 243, g: 243, b: 4 }
     }).toBuffer()
+    console.log("getting logo")
     var logoFilePath = path.resolve('.', 'assets/0N1_logo_grey.svg')
     var logo = await sharp(logoFilePath).png().toBuffer()
+    console.log("getting banner")
     var bannerFilePath = path.resolve('.', 'assets/0n1-banner-overlay.png')
     var banner = await sharp(bannerFilePath).resize({
       fit: sharp.fit.contain,
       width: 1170
     }).png().toBuffer()
+    console.log("getting background color")
     await Jimp.read(buffer, async function (err, image) {
       var hex = image.getPixelColor(1, 1)
       var rgb = Jimp.intToRGBA(hex)

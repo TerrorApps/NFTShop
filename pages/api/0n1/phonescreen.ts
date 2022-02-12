@@ -33,28 +33,29 @@ export default async function handler(
     var traitsData = await traitsRes.json()
     console.log("traits")
     console.log(traitsData)
-    await Jimp.read(imageUrl, async function (err, image) {
+    var input = await axios(
+      {url: imageUrl,
+      responseType: "arraybuffer"})
+    console.log("casting to buffer")
+    var buffer = input.data as Buffer
+    console.log("using sharp for oni")
+    var oni = await sharp(buffer).resize({
+      fit: sharp.fit.contain,
+      width: 1170,
+      height: 1170,
+    }).toBuffer()
+    var logoFilePath = path.resolve('.', 'assets/0N1_logo_grey.svg')
+    var logo = await sharp(logoFilePath).png().toBuffer()
+    var bannerFilePath = path.resolve('.', 'assets/0n1-banner-overlay.png')
+    var banner = await sharp(bannerFilePath).resize({
+      fit: sharp.fit.contain,
+      width: 1170
+    }).png().toBuffer()
+    await Jimp.read(oni, async function (err, image) {
       console.log(`error: ${err}`)
       console.log("retrieved image")
       var hex = image.getPixelColor(1, 1)
       var rgb = Jimp.intToRGBA(hex)
-      var input = await axios(
-        {url: imageUrl,
-        responseType: "arraybuffer"})
-      var buffer = input.data as Buffer
-      var oni = await sharp(buffer).resize({
-        fit: sharp.fit.contain,
-        width: 1170,
-        height: 1170,
-        background: { r: 243, g: 243, b: 4 }
-      }).toBuffer()
-      var logoFilePath = path.resolve('.', 'assets/0N1_logo_grey.svg')
-      var logo = await sharp(logoFilePath).png().toBuffer()
-      var bannerFilePath = path.resolve('.', 'assets/0n1-banner-overlay.png')
-      var banner = await sharp(bannerFilePath).resize({
-        fit: sharp.fit.contain,
-        width: 1170
-      }).png().toBuffer()
       await sharp({
         create: {
           width: 1170,
@@ -90,5 +91,6 @@ export default async function handler(
       res.status(200)
     })
     console.log("something happened")
+    res.status(500)
   }
 }

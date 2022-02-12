@@ -34,6 +34,8 @@ export default async function handler(
     console.log("traits")
     console.log(traitsData)
     await Jimp.read(imageUrl, async function (err, image) {
+      console.log(`error: ${err}`)
+      console.log("retrieved image")
       var hex = image.getPixelColor(1, 1)
       var rgb = Jimp.intToRGBA(hex)
       var input = await axios(
@@ -87,5 +89,6 @@ export default async function handler(
       readStream.pipe(res);
       res.status(200)
     })
+    console.log("something happened")
   }
 }

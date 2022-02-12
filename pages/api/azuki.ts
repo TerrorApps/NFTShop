@@ -73,7 +73,7 @@ export default async function handler(
         },
         {
         input: logo,
-        top: 750,
+        top: 900,
         left: 75
         }
         ]).png().toFile(fileName)

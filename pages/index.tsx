@@ -6,6 +6,7 @@ import UwuCard from './components/uwu_card'
 import KillergfCard from './components/killergf_card'
 import DeadfellazCard from './components/deadfellaz_card'
 import FishyFamCard from './components/fishyfam_card'
+import KarafuruCard from './components/karafuru_card'
 
 export default function Home() {
   const [value, setValue] = useState("value")
@@ -25,6 +26,7 @@ export default function Home() {
     <div className="p-10 grid grid-cols-1 sm:grid-cols-1 md:grid-cols-3 lg:grid-cols-3 xl:grid-cols-3 gap-5">
       <OniCard />
       <AzukiCard />
+      <KarafuruCard />
       <UwuCard />
       <KillergfCard />
       <DeadfellazCard />

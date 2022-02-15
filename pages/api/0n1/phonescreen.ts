@@ -26,22 +26,19 @@ export default async function handler(
     console.log("its invalid")
     res.status(400).end()
 } else {
-    // var fileName = `${tmpdir}/0n1_phonescreen_${tokenId}.png`
-    var fileName = `0n1/phonescreen/0n1_phonescreen_${req.query["tokenId"]}.png`
+    var fileName = `${tmpdir}/0n1_phonescreen_${tokenId}.png`
+    // var fileName = `0n1/phonescreen/0n1_phonescreen_${req.query["tokenId"]}.png`
     var imageUrl = `http://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`
     console.log(`https://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`)
     // var removeLeadingZero = +tokenId
+    
     // var traitsRes = await fetch(`https://ipfs.io/ipfs/QmXgSuLPGuxxRuAana7JdoWmaS25oAcXv3x2pYMN9kVfg3/${removeLeadingZero}`)
     // var traitsData = await traitsRes.json()
     // console.log("traits")
     // console.log(traitsData)
-    try {
-      var input = await axios(
+    var input = await axios(
         {url: imageUrl,
         responseType: "arraybuffer"})
-    } catch (error) {
-      console.log(`error ${error}`)
-    }
     console.log("casting to buffer")
     var buffer = input.data as Buffer
     var oni = await sharp(buffer).resize({

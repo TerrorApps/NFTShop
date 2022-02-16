@@ -27,9 +27,8 @@ export default async function handler(
     res.status(400).end()
 } else {
     var fileName = `${tmpdir}/0n1_phonescreen_${tokenId}.png`
-    // var fileName = `0n1/phonescreen/0n1_phonescreen_${req.query["tokenId"]}.png`
     var imageUrl = `http://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`
-    console.log(`https://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`)
+    console.log(`https://ipfs.io/ipfs/QmdVbsF8p5B3z7LTMCZVQD4ScJvrnDgN3jwAYeK896iWD1/${tokenId}.png`)
     // var removeLeadingZero = +tokenId
     
     // var traitsRes = await fetch(`https://ipfs.io/ipfs/QmXgSuLPGuxxRuAana7JdoWmaS25oAcXv3x2pYMN9kVfg3/${removeLeadingZero}`)

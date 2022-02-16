@@ -3,13 +3,20 @@ import { useState } from 'react'
 import { ImageLoaderProps } from 'next/image'
 
 const myLoader = ({ src, width, quality }: ImageLoaderProps) => {
-    return `https://ipfs.io/ipfs/Qme4BpySeFqXvosRnPuk6RJ8qrm8sHw3kb3hChrp8X6Jkq/0n1_phonescreen_${src}`
+    return `https://regentool.mypinata.cloud/ipfs/QmPSmLFF9aPM3CSU6WSTrtxobPGt6xxmLsEkNRo8K8YQZn/0n1_phonescreen_${src}`
 }
 
 export default function Home() {
-    const [tokenIds, setTokenIds] = useState(Array.from(Array(10).keys()))
+    const [tokenIds, setTokenIds] = useState(Array.from(Array(100).keys()))
     return (
-        <main className="max-w-11xl mx-auto px-4 sm:px-6 lg:px-8">
+        <main className="max-w-11xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
+            <div className="flex justify-center">
+                <div className="mb-3 xl:w-96">
+                    <div className="input-group relative flex flex-wrap items-stretch w-full mb-4 rounded">
+                    <input type="search" className="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none" placeholder="Token ID" aria-label="Search" aria-describedby="button-addon2" />
+                    </div>
+                </div>
+            </div>
             <div className="flex">
                 {/* <form className="hidden w-1/4 col-start-1 lg:block sticky top-0 h-screen pt-32">
                     <div className="hidden lg:block relative z-10 flex items-end justify-between h-14 pb-6 border-b border-opacity-10 border-black"></div>
@@ -17,7 +24,7 @@ export default function Home() {
                     </div>
 
                 </form> */}
-                <div className="lg:px-8 w-full lg:pt-32 pt-28">
+                <div className="lg:px-8 w-full">
                     <div className="grid lg:grid-cols-4 2xl:grid-cols-5 grid-cols-2 lg:gap-x-6 gap-x-4 lg:gap-y-2 gap-y-1  lg:col-span-3">
                     {
                         tokenIds.map(tokenId => {
@@ -34,7 +41,6 @@ export default function Home() {
                                         loading="lazy"
                                     />
                                 </div>
-                                <p className="opacity-50  mt-3 uppercase font-mono tracking-widest text-3xs text-center">{`No. ${tokenId}`}</p>
                                 <h3 className="font-400  pb-2 -mt-1 text-2xs tracking-wider text-center uppercase">No. 6987</h3>
                                 </a>
                             )

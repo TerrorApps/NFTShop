@@ -3,11 +3,11 @@ import { useState } from 'react'
 import { ImageLoaderProps } from 'next/image'
 
 const myLoader = ({ src, width, quality }: ImageLoaderProps) => {
-    return `https://regentool.mypinata.cloud/ipfs/QmPSmLFF9aPM3CSU6WSTrtxobPGt6xxmLsEkNRo8K8YQZn/0n1_phonescreen_${src}`
+    return `https://regentool.mypinata.cloud/ipfs/QmTVEzUdJiqFV5KeMwp4pgymTzaXcqZo5KTaHNsskuie76/azuki_phonescreen_${src}`
 }
 
 export default function Home() {
-    const [tokenIds, setTokenIds] = useState(Array.from({length: 100}, () => Math.floor(Math.random() * 7776)))
+    const [tokenIds, setTokenIds] = useState(Array.from({length: 100}, () => Math.floor(Math.random() * 9999)))
     const [tokenId, settokenId] = useState("")
     return (
         <main className="max-w-11xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
@@ -42,7 +42,7 @@ export default function Home() {
                                     loader={myLoader}
                                     src={`${tokenId}.png`}
                                     alt=""
-                                    className=" duration-300 w-full h-full object-center object-cover fade-in "
+                                    className=" duration-300 w-full h-full object-center object-cover "
                                     width="585"
                                     height="1266"
                                     placeholder="blur"
@@ -57,17 +57,17 @@ export default function Home() {
                                 <div className="w-full fade-in lg:group-hover:scale-105 group-hover:shadow-me duration-300 rounded-xl aspect-w-1 aspect-h-1 overflow-hidden bg-gray-100 shadow-me animate-fade-in-down">
                                     <Image
                                         loader={myLoader}
-                                        src={`${id+1}.png`}
+                                        src={`${id}.png`}
                                         alt=""
-                                        className=" duration-300 w-full h-full object-center object-cover fade-in"
+                                        className=" duration-300 w-full h-full object-center object-cover "
                                         width="585"
                                         height="1266"
+                                        priority={idx > 11}
                                         placeholder="blur"
                                         blurDataURL="data:..."
-                                        priority={idx < 12}
                                     />
                                 </div>
-                                <h3 className="font-400  pb-2 -mt-1 text-2xs tracking-wider text-center uppercase">No. {id + 1}</h3>
+                                <h3 className="font-400  pb-2 -mt-1 pt-2 text-2xs tracking-wider text-center uppercase">No. {id}</h3>
                                 </a>
                             )
                         })

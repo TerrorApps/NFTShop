@@ -1,6 +1,6 @@
 export default function AzukiCard() {
     return (
-        <a href="/azuki" className="rounded overflow-hidden shadow-lg">
+        <a href="/azuki/phonescreen" className="rounded overflow-hidden shadow-lg">
         <img className="w-full" src="./home/azuki_home.png" alt="Forest" />
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">Azuki</div>

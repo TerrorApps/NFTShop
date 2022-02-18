@@ -27,6 +27,7 @@ export default async function handler(
     res.status(400).end()
 } else {
     var fileName = `${tmpdir}/0n1_${tokenId}.png`
+    console.log(`saving image here ${fileName}`)
     var imageUrl = `https://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`
     var removeLeadingZero = +tokenId
     var dataRes = await fetch(`https://ipfs.io/ipfs/QmXgSuLPGuxxRuAana7JdoWmaS25oAcXv3x2pYMN9kVfg3/${removeLeadingZero}`)
@@ -34,16 +35,16 @@ export default async function handler(
     console.log("traits")
     console.log(traitsData)
     var extra = traitsData["attributes"].find((data: { "trait_type": string }) => data.trait_type == "Extra")
-    var roniTopPosition = 50
-    var roniLeftPosition = 50
-    var roniWidth = 1100
-    var roniHeight = 1100
+    var roniTopPosition = 25
+    var roniLeftPosition = 25
+    var roniWidth = 550
+    var roniHeight = 550
 
     if (extra["value"].includes('Oni')) {
-        roniTopPosition = -400
+        roniTopPosition = -175
         roniLeftPosition = 100
-        roniWidth = 750
-        roniHeight = 750
+        roniWidth = 325
+        roniHeight = 325
     }
 
     await Jimp.read(imageUrl, async function (err, image) {
@@ -63,12 +64,12 @@ export default async function handler(
       var bannerFilePath = path.resolve('.', 'assets/0n1-banner-overlay.png')
       var banner = await sharp(bannerFilePath).resize({
         fit: sharp.fit.contain,
-        width: 1170
+        width: 585
       }).png().toBuffer()
       await sharp(buffer).resize({
         fit: sharp.fit.contain,
-        width: 1170,
-        height: 1170,
+        width: 585,
+        height: 585,
         background: { r: rgb.r, g: rgb.g, b: rgb.b }
       }).png()
       .composite([

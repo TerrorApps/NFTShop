@@ -10,7 +10,8 @@ module.exports = {
       "api.uwucrew.art",
       "gateway.pinata.cloud",
       "ipfs.io",
-      "ikzttp.mypinata.cloud"
+      "ikzttp.mypinata.cloud",
+      "regentool.mypinata.cloud"
     ],
   }
 }

@@ -17,11 +17,13 @@ export default async function handler(
 ) {
   sharp.cache(false);
   var tokenId = req.query["tokenId"]
-  if (Number(tokenId) < 1) {
+  if (Number(tokenId) < 0) {
       console.log("its invalid")
       res.status(400).end()
   } else {
-    var fileName = `${tmpdir}/azuki_${tokenId}.png`
+    // var fileName = `${tmpdir}/azuki_${tokenId}.png`
+    var fileName = `azuki/azuki_phonescreen_${req.query["tokenId"]}.png`
+
     var dataRes = await fetch(`https://ikzttp.mypinata.cloud/ipfs/QmQFkLSQysj94s5GvTHPyzTxrawwtjgiiYS2TBLgrvw8CW/${tokenId}`)
     var imageUrl = `https://ikzttp.mypinata.cloud/ipfs/QmYDvPAXtiJg7s8JdRBSLWdgSphQdac8j1YuQNNxcGE1hg/${tokenId}.png`
     var dataJson = await dataRes.json()

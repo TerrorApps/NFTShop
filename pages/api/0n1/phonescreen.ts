@@ -26,31 +26,38 @@ export default async function handler(
     console.log("its invalid")
     res.status(400).end()
 } else {
-    var fileName = `${tmpdir}/0n1_${tokenId}.png`
-    var imageUrl = `https://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`
-    var removeLeadingZero = +tokenId
-    var traitsRes = await fetch(`https://ipfs.io/ipfs/QmXgSuLPGuxxRuAana7JdoWmaS25oAcXv3x2pYMN9kVfg3/${removeLeadingZero}`)
-    var traitsData = await traitsRes.json()
-    console.log("traits")
-    console.log(traitsData)
+    var fileName = `${tmpdir}/0n1_phonescreen_${tokenId}.png`
+    var imageUrl = `http://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`
+    console.log(`https://ipfs.io/ipfs/QmdVbsF8p5B3z7LTMCZVQD4ScJvrnDgN3jwAYeK896iWD1/${tokenId}.png`)
+    // var removeLeadingZero = +tokenId
+    
+    // var traitsRes = await fetch(`https://ipfs.io/ipfs/QmXgSuLPGuxxRuAana7JdoWmaS25oAcXv3x2pYMN9kVfg3/${removeLeadingZero}`)
+    // var traitsData = await traitsRes.json()
+    // console.log("traits")
+    // console.log(traitsData)
     var input = await axios(
-      {url: imageUrl,
-      responseType: "arraybuffer"})
+        {url: imageUrl,
+        responseType: "arraybuffer"})
     console.log("casting to buffer")
     var buffer = input.data as Buffer
     var oni = await sharp(buffer).resize({
       fit: sharp.fit.contain,
-      width: 1170,
-      height: 1170,
+      width: 585,
+      height: 585,
     }).toBuffer()
     console.log("getting logo")
     var logoFilePath = path.resolve('.', 'assets/0N1_logo_grey.svg')
-    var logo = await sharp(logoFilePath).png().toBuffer()
+    var logo = await sharp(logoFilePath).resize({
+      fit: sharp.fit.contain,
+      width: 275,
+      height: 275
+    })
+    .png().toBuffer()
     console.log("getting banner")
     var bannerFilePath = path.resolve('.', 'assets/0n1-banner-overlay.png')
     var banner = await sharp(bannerFilePath).resize({
       fit: sharp.fit.contain,
-      width: 1170
+      width: 585
     }).png().toBuffer()
     console.log("getting background color")
     await Jimp.read(buffer, async function (err, image) {
@@ -58,21 +65,21 @@ export default async function handler(
       var rgb = Jimp.intToRGBA(hex)
       await sharp({
         create: {
-          width: 1170,
-          height: 2532,
+          width: 585,
+          height: 1266,
           channels: 4,
           background: { r: rgb.r, g: rgb.g, b: rgb.b }
         }
       }).png()
       .composite([{
         input: oni,
-        top: 1370,
+        top: 685,
         left: 0,
       },
       {
         input: logo,
-        top: 750,
-        left: 300
+        top: 325,
+        left: 150
       },
       {
         input: banner,

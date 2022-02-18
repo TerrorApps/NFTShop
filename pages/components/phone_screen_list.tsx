@@ -12,8 +12,8 @@ interface PhoneScreenList {
 }
 
 export default function PhoneScreenList(props: PhoneScreenList) {
-    // const [tokenIds, setTokenIds] = useState(Array.from({length: 100}, () => Math.floor(Math.random() * props.ceiling)))
-    const [tokenIds, setTokenIds] = useState(Array.from(Array(100).keys()))
+    const [tokenIds, setTokenIds] = useState(Array.from({length: 100}, () => Math.floor(Math.random() * props.ceiling)))
+    // const [tokenIds, setTokenIds] = useState(Array.from(Array(100).keys()))
     const [tokenId, setTokenId] = useState("")
     const [showModal, setModal] = useState(false)
     const [modalTokenId, setModalTokenId] = useState(1)

@@ -11,8 +11,7 @@ module.exports = {
       "gateway.pinata.cloud",
       "ipfs.io",
       "ikzttp.mypinata.cloud",
-      "regentool.mypinata.cloud",
-      "gateway.pinata.cloud"
+      "regentool.mypinata.cloud"
     ],
   },
   i18n: {

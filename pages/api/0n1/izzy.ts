@@ -26,20 +26,14 @@ export default async function handler(
     console.log("its invalid")
     res.status(400).end()
 } else {
-    // var fileName = `${tmpdir}/0n1_${tokenId}.png`
-    var fileName = `0n1/0n1_izzy_${req.query["tokenId"]}.png`
-
+    var fileName = `${tmpdir}/0n1_${tokenId}.png`
     console.log(`saving image here ${fileName}`)
-    //var removeLeadingZero = +tokenId
-    var dataRes = await fetch(`https://ipfs.io/ipfs/QmXgSuLPGuxxRuAana7JdoWmaS25oAcXv3x2pYMN9kVfg3/${req.query["tokenId"]}`)
+    var imageUrl = `https://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`
+    var removeLeadingZero = +tokenId
+    var dataRes = await fetch(`https://ipfs.io/ipfs/QmXgSuLPGuxxRuAana7JdoWmaS25oAcXv3x2pYMN9kVfg3/${removeLeadingZero}`)
     var traitsData = await dataRes.json()
     console.log("traits")
     console.log(traitsData)
-    // var imageUrl = `https://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`
-    var imageAddress = traitsData["image"].split("//")[1]
-    var imageUrl = `https://ipfs.io/ipfs/${imageAddress}`
-    var blah = `https://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`
-
     var extra = traitsData["attributes"].find((data: { "trait_type": string }) => data.trait_type == "Extra")
     var roniTopPosition = 25
     var roniLeftPosition = 25

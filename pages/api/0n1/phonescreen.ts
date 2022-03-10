@@ -26,19 +26,19 @@ export default async function handler(
     console.log("its invalid")
     res.status(400).end()
 } else {
-    // var fileName = `${tmpdir}/0n1_phonescreen_${tokenId}.png`
-    var fileName = `azuki/azuki_phonescreen_${req.query["tokenId"]}.png`
-
+    var fileName = `${tmpdir}/0n1_phonescreen_${tokenId}.png`
     var imageUrl = `http://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`
-    var removeLeadingZero = +tokenId    
-    var traitsRes = await fetch(`https://ipfs.io/ipfs/QmXgSuLPGuxxRuAana7JdoWmaS25oAcXv3x2pYMN9kVfg3/${removeLeadingZero}`)
-    var traitsData = await traitsRes.json()
-    console.log("image url")
-    console.log(imageUrl)
+    console.log(`https://ipfs.io/ipfs/QmdVbsF8p5B3z7LTMCZVQD4ScJvrnDgN3jwAYeK896iWD1/${tokenId}.png`)
+    // var removeLeadingZero = +tokenId
+    
+    // var traitsRes = await fetch(`https://ipfs.io/ipfs/QmXgSuLPGuxxRuAana7JdoWmaS25oAcXv3x2pYMN9kVfg3/${removeLeadingZero}`)
+    // var traitsData = await traitsRes.json()
+    // console.log("traits")
+    // console.log(traitsData)
     var input = await axios(
         {url: imageUrl,
         responseType: "arraybuffer"})
-
+    console.log("casting to buffer")
     var buffer = input.data as Buffer
     var oni = await sharp(buffer).resize({
       fit: sharp.fit.contain,

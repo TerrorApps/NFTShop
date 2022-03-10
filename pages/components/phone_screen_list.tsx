@@ -84,7 +84,7 @@ export default function PhoneScreenList(props: PhoneScreenList) {
                                         className=" duration-300 w-full h-full object-center object-cover fade-in"
                                         width="585"
                                         height="1266"
-                                        loading="lazy"
+                                        priority={true}
                                     />
                                 </div>
                             </a>
@@ -103,3 +103,10 @@ export default function PhoneScreenList(props: PhoneScreenList) {
         </main>
     )
 }
+
+                {/* <form className="hidden w-1/4 col-start-1 lg:block sticky top-0 h-screen pt-32">
+                    <div className="hidden lg:block relative z-10 flex items-end justify-between h-14 pb-6 border-b border-opacity-10 border-black"></div>
+                    <div className="overflow-y-scroll pb-28 px-4 lg:px-0 pt-6 hide-scrollbar lg:max-h-[calc(100vh-11.5rem)]">
+                    </div>
+
+                </form> */}

@@ -26,11 +26,7 @@ export default function NanoSquareList(props: SquareList) {
     }
 
     const handleTokenIdChange = (event: React.FormEvent<HTMLInputElement>) => {
-        clearTimeout(timeout)
-
-        timeout = setTimeout(function () {
-            setTokenId(event.currentTarget.value)
-        }, 1000);
+        setTokenId(event.currentTarget.value)
     }
 
     const tokenDebounce = (tokenId: string) => {
@@ -55,7 +51,7 @@ export default function NanoSquareList(props: SquareList) {
                     <input
                         value={tokenId}
                         // onChange={handleTokenIdChange}
-                        onChange={(e) => tokenDebounce(e.currentTarget.value)()}
+                        onChange={(e) => handleTokenIdChange(e)}
                         type="search"
                         className="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
                         placeholder="Token ID"

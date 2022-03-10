@@ -22,11 +22,12 @@ export default async function handler(
       tokenId = "0" + tokenId
     }
   }
-  if (Number(tokenId) < 1) {
+  if (Number(tokenId) < 0) {
     console.log("its invalid")
     res.status(400).end()
 } else {
-    var fileName = `${tmpdir}/0n1_${tokenId}.png`
+    // var fileName = `${tmpdir}/0n1_${tokenId}.png`
+    var fileName = `uwucrew/uwucrew_phonescreen_${req.query["tokenId"]}.png`
     var uwuApiRes = await fetch(`https://api.uwucrew.art/api/uwu/${tokenId}`)
     var resJson = await uwuApiRes.json()
     var imageUrl = resJson["image"]
@@ -40,29 +41,34 @@ export default async function handler(
       var buffer = input.data as Buffer
       var oni = await sharp(buffer).resize({
         fit: sharp.fit.contain,
-        width: 1170,
-        height: 1170,
+        width: 585,
+        height: 585,
         background: { r: rgb.r, g: rgb.g, b: rgb.b }
       }).toBuffer()
       var logoFilePath = path.resolve('.', 'assets/uwucrew_logo.svg')
-      var logo = await sharp(logoFilePath).png().toBuffer()
+      var logo = await sharp(logoFilePath).resize({
+        fit: sharp.fit.contain,
+        width: 275,
+        height: 275,
+        background: { r: rgb.r, g: rgb.g, b: rgb.b }
+      }).png().toBuffer()
       await sharp({
         create: {
-          width: 1170,
-          height: 2532,
+          width: 585,
+          height: 1266,
           channels: 4,
           background: { r: rgb.r, g: rgb.g, b: rgb.b }
         }
       }).png()
       .composite([{
         input: oni,
-        top: 1390,
-        left: -50,
+        top: 695,
+        left: 0,
       },
       {
         input: logo,
-        top: 750,
-        left: 300
+        top: 425,
+        left: 150
       },
     ])
     .png().toFile(fileName)

@@ -63,7 +63,7 @@ export default function NanoSquareList(props: SquareList) {
                             className="group cursor-pointer fade-in text-sm lg:-20  duration-300">
                             <div className="w-full fade-in lg:group-hover:scale-105 group-hover:shadow-me duration-300 rounded-xl aspect-w-1 aspect-h-1 overflow-hidden bg-gray-100 shadow-me animate-fade-in-down">
                                 <Image
-                                    key={`${tokenId}-${new Date().getTime()}`}
+                                    key={`${tokenId}-1-${new Date().getTime()}`}
                                     loader={tokenLoader}
                                     src={`${tokenId}_1`}
                                     alt=""
@@ -74,11 +74,11 @@ export default function NanoSquareList(props: SquareList) {
                                 />
                             </div>
                         </a>
-                        {/* <a 
+                        <a 
                         className="group cursor-pointer fade-in text-sm lg:-20  duration-300">
                             <div className="w-full fade-in lg:group-hover:scale-105 group-hover:shadow-me duration-300 rounded-xl aspect-w-1 aspect-h-1 overflow-hidden bg-gray-100 shadow-me animate-fade-in-down">
                                 <Image
-                                    key={`${tokenId}-${new Date().getTime()}`}
+                                    key={`${tokenId}-2-${new Date().getTime()}`}
                                     loader={tokenLoader}
                                     src={`${tokenId}_2`}
                                     alt=""
@@ -93,7 +93,7 @@ export default function NanoSquareList(props: SquareList) {
                         className="group cursor-pointer fade-in text-sm lg:-20  duration-300">
                             <div className="w-full fade-in lg:group-hover:scale-105 group-hover:shadow-me duration-300 rounded-xl aspect-w-1 aspect-h-1 overflow-hidden bg-gray-100 shadow-me animate-fade-in-down">
                                 <Image
-                                    key={`${tokenId}-${new Date().getTime()}`}
+                                    key={`${tokenId}-3-${new Date().getTime()}`}
                                     loader={tokenLoader}
                                     src={`${tokenId}_3`}
                                     alt=""
@@ -108,7 +108,7 @@ export default function NanoSquareList(props: SquareList) {
                         className="group cursor-pointer fade-in text-sm lg:-20  duration-300">
                             <div className="w-full fade-in lg:group-hover:scale-105 group-hover:shadow-me duration-300 rounded-xl aspect-w-1 aspect-h-1 overflow-hidden bg-gray-100 shadow-me animate-fade-in-down">
                                 <Image
-                                    key={`${tokenId}-${new Date().getTime()}`}
+                                    key={`${tokenId}-4-${new Date().getTime()}`}
                                     loader={tokenLoader}
                                     src={`${tokenId}_4`}
                                     alt=""
@@ -123,7 +123,7 @@ export default function NanoSquareList(props: SquareList) {
                         className="group cursor-pointer fade-in text-sm lg:-20  duration-300">
                             <div className="w-full fade-in lg:group-hover:scale-105 group-hover:shadow-me duration-300 rounded-xl aspect-w-1 aspect-h-1 overflow-hidden bg-gray-100 shadow-me animate-fade-in-down">
                                 <Image
-                                    key={`${tokenId}-${new Date().getTime()}`}
+                                    key={`${tokenId}-5-${new Date().getTime()}`}
                                     loader={tokenLoader}
                                     src={`${tokenId}_5`}
                                     alt=""
@@ -138,7 +138,7 @@ export default function NanoSquareList(props: SquareList) {
                         className="group cursor-pointer fade-in text-sm lg:-20  duration-300">
                             <div className="w-full fade-in lg:group-hover:scale-105 group-hover:shadow-me duration-300 rounded-xl aspect-w-1 aspect-h-1 overflow-hidden bg-gray-100 shadow-me animate-fade-in-down">
                                 <Image
-                                    key={`${tokenId}-${new Date().getTime()}`}
+                                    key={`${tokenId}-6-${new Date().getTime()}`}
                                     loader={tokenLoader}
                                     src={`${tokenId}_6`}
                                     alt=""
@@ -148,7 +148,7 @@ export default function NanoSquareList(props: SquareList) {
                                     quality={100}
                                 />
                             </div>
-                        </a> */}
+                        </a>
                         </>                                                                                               
                         )
                        : 

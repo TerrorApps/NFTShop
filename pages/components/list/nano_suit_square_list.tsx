@@ -29,11 +29,6 @@ export default function NanoSquareList(props: SquareList) {
         setTokenId(event.currentTarget.value)
     }
 
-    const tokenDebounce = (tokenId: string) => {
-        console.log("yo")
-        return _.debounce(() => setTokenId(tokenId), 1000)
-    }
-
     const myLoader = ({ src, width, quality }: ImageLoaderProps) => {
         var nanoRandom = Math.floor(Math.random() * (6 - 1) + 1)
         return `https://regentool.mypinata.cloud/ipfs/${props.cid}/${props.fileName}_${src}_${nanoRandom}.png`
@@ -50,7 +45,6 @@ export default function NanoSquareList(props: SquareList) {
                     <div className="input-group relative flex flex-wrap items-stretch w-full mb-4 rounded">
                     <input
                         value={tokenId}
-                        // onChange={handleTokenIdChange}
                         onChange={(e) => handleTokenIdChange(e)}
                         type="search"
                         className="form-control relative flex-auto min-w-0 block w-full px-3 py-1.5 text-base font-normal text-gray-700 bg-white bg-clip-padding border border-solid border-gray-300 rounded transition ease-in-out m-0 focus:text-gray-700 focus:bg-white focus:border-blue-600 focus:outline-none"
@@ -76,7 +70,7 @@ export default function NanoSquareList(props: SquareList) {
                                     className=" duration-300 w-full h-full object-center object-cover fade-in "
                                     width="585"
                                     height="585"
-                                    loading='lazy'
+                                    quality={100}
                                 />
                             </div>
                         </a>
@@ -91,7 +85,7 @@ export default function NanoSquareList(props: SquareList) {
                                     className=" duration-300 w-full h-full object-center object-cover fade-in "
                                     width="585"
                                     height="585"
-                                    loading='lazy'
+                                    quality={100}
                                 />
                             </div>
                         </a>
@@ -106,7 +100,7 @@ export default function NanoSquareList(props: SquareList) {
                                     className=" duration-300 w-full h-full object-center object-cover fade-in "
                                     width="585"
                                     height="585"
-                                    loading='lazy'
+                                    quality={100}
                                 />
                             </div>
                         </a>
@@ -121,7 +115,7 @@ export default function NanoSquareList(props: SquareList) {
                                     className=" duration-300 w-full h-full object-center object-cover fade-in "
                                     width="585"
                                     height="585"
-                                    loading='lazy'
+                                    quality={100}
                                 />
                             </div>
                         </a>
@@ -136,7 +130,7 @@ export default function NanoSquareList(props: SquareList) {
                                     className=" duration-300 w-full h-full object-center object-cover fade-in "
                                     width="585"
                                     height="585"
-                                    loading='lazy'
+                                    quality={100}
                                 />
                             </div>
                         </a>
@@ -151,7 +145,7 @@ export default function NanoSquareList(props: SquareList) {
                                     className=" duration-300 w-full h-full object-center object-cover fade-in "
                                     width="585"
                                     height="585"
-                                    loading='lazy'
+                                    quality={100}
                                 />
                             </div>
                         </a>
@@ -173,6 +167,7 @@ export default function NanoSquareList(props: SquareList) {
                                         width="585"
                                         height="585"
                                         loading="lazy"
+                                        quality={100}
                                     />
                                 </div>
                             </a>

@@ -56,7 +56,9 @@ async function doStuff(index: number, tokenId: string | string[], oni: Buffer) {
         fit: sharp.fit.contain,
         width: 585,
         height: 585
-      }).png().toBuffer()
+      })
+      .flop()
+      .png().toBuffer()
     await sharp(oni)
         .composite([{
             input: suit1,

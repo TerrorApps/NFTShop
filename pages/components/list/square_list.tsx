@@ -2,24 +2,24 @@ import Image from 'next/image'
 import { useState } from 'react'
 import { ImageLoaderProps } from 'next/image'
 import _ from "lodash"
-import PhoneScreenModal from './phone_screen_modal'
+import PhoneScreenModal from '../phone_screen_modal'
+import SquareModal from '../modal/SquareModal'
 
-interface PhoneScreenList {
+interface SquareList {
     name: string,
     floor: number,
     ceiling: number,
     cid: string,
+    fileName: string
 }
 
-export default function PhoneScreenList(props: PhoneScreenList) {
+export default function SquareList(props: SquareList) {
     const [tokenIds, setTokenIds] = useState(Array.from({length: 100}, () => Math.floor(Math.random() * props.ceiling)))
-    // const [tokenIds, setTokenIds] = useState(Array.from(Array(100).keys()))
     const [tokenId, setTokenId] = useState("")
     const [showModal, setModal] = useState(false)
     const [modalTokenId, setModalTokenId] = useState(1)
 
     const updateModal = (modalState: boolean, tokenId: number) => {
-        console.log("update modal clicked")
         setModal(modalState)
         setModalTokenId(tokenId)
     }
@@ -29,7 +29,7 @@ export default function PhoneScreenList(props: PhoneScreenList) {
     }
 
     const myLoader = ({ src, width, quality }: ImageLoaderProps) => {
-        return `https://regentool.mypinata.cloud/ipfs/${props.cid}/${props.name}_phonescreen_${src}`
+        return `https://regentool.mypinata.cloud/ipfs/${props.cid}/${props.name}_${props.fileName}_${src}`
     }
 
     return (
@@ -64,7 +64,7 @@ export default function PhoneScreenList(props: PhoneScreenList) {
                                     alt=""
                                     className=" duration-300 w-full h-full object-center object-cover fade-in "
                                     width="585"
-                                    height="1266"
+                                    height="585"
                                     loading='lazy'
                                 />
                             </div>
@@ -83,7 +83,7 @@ export default function PhoneScreenList(props: PhoneScreenList) {
                                         alt=""
                                         className=" duration-300 w-full h-full object-center object-cover fade-in"
                                         width="585"
-                                        height="1266"
+                                        height="585"
                                         loading="lazy"
                                     />
                                 </div>
@@ -94,11 +94,12 @@ export default function PhoneScreenList(props: PhoneScreenList) {
                     </div>
                 </div>
             </div>
-            {showModal && <PhoneScreenModal
+            {showModal && <SquareModal
                 updateModal={updateModal}
                 tokenId={modalTokenId}
                 cid={props.cid}
                 name={props.name}
+                fileName="izzy"
             />}
         </main>
     )

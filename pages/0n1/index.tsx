@@ -97,6 +97,14 @@ export default function Home() {
                             Nano Suit
                             </a>
                     </li>
+                    <li className="mr-2">
+                        <a 
+                            href="/0n1/custom_nano"
+                            className={determineTabColor("nanoSuit")}
+                            aria-current="page">
+                            Custom Nano Suit
+                            </a>
+                    </li>
                 </ul>
             </div>
 

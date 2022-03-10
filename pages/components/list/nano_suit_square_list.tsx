@@ -159,7 +159,6 @@ export default function NanoSquareList(props: SquareList) {
                                 className="group cursor-pointer fade-in text-sm lg:-20  duration-300">
                                 <div className="w-full fade-in lg:group-hover:scale-105 group-hover:shadow-me duration-300 rounded-xl aspect-w-1 aspect-h-1 overflow-hidden bg-gray-100 shadow-me animate-fade-in-down">
                                     <Image
-                                        key={`${tokenId}-${new Date().getTime()}`}
                                         loader={myLoader}
                                         src={`${id + props.floor}`}
                                         alt=""

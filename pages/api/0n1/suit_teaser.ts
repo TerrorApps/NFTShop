@@ -1,21 +1,15 @@
 // Next.js API route support: https://nextjs.org/docs/api-routes/introduction
-// import type { NextApiRequest, NextApiResponse } from 'next'
-// import sharp from 'sharp'
-// import axios from 'axios'
-// import fileSystem from 'fs'
-// import Jimp from 'jimp'
-// import path from 'path'
-// import { tmpdir } from 'os'
-// import { generate } from 'text-to-image'
+import type { NextApiRequest, NextApiResponse } from 'next'
 
-// type Data = {
-//   name: string
-// }
+type Data = {
+  name: string
+}
 
-// export default async function handler(
-//   req: NextApiRequest,
-//   res: NextApiResponse<Data>
-// ) {
+export default async function handler(
+  req: NextApiRequest,
+  res: NextApiResponse<Data>
+) {
+}
 //   sharp.cache(false);
 //   var tokenId = req.query["tokenId"]
 //   if (tokenId.length < 4) {

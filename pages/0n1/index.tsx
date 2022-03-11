@@ -51,7 +51,7 @@ export default function Home() {
                         name="0n1"
                         floor={1}
                         ceiling={7777}
-                        cid="QmWeHWkF9gwkgvdoKJKjsCkegZGFe281vzFmgYyYvM17bx"
+                        cid="QmeKo9m435po4bd7HEqgwd2E1g4imioNcy7RtggW3rHJaV"
                         fileName="nano_suit"
                     />
                 )

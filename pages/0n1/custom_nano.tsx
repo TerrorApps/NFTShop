@@ -71,6 +71,7 @@ export default function Azuki() {
                             <a href="#" onClick={() => onClickOverlay("Nano_Gucci")} className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex={-1} id="menu-item-0">Gucci</a>
                             <a href="#" onClick={() => onClickOverlay("Nano_GucciV2")} className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex={-1} id="menu-item-0">Gucci v2</a>
                             <a href="#" onClick={() => onClickOverlay("nano_Ukraine")} className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex={-1} id="menu-item-0">Ukraine</a>
+                            <a href="#" onClick={() => onClickOverlay("Nano_Purple")} className="text-gray-700 block px-4 py-2 text-sm" role="menuitem" tabIndex={-1} id="menu-item-0">Nano Purple</a>
                         </div>
                     </div>
             }

@@ -37,8 +37,6 @@ export default async function handler(
       width: 585,
       height: 585,
     }).toBuffer()
-    var removeLeadingZero = +tokenId
-    //var fileName = `nano_gucci/nano_gucci_${removeLeadingZero}.png`
     var fileName = `${tmpdir}/0n1_${tokenId}_${overlay}.png`
     var suit_png = path.resolve('.', `assets/nano_suit/${overlay}.png`)
     var suit1 = await sharp(suit_png).resize({

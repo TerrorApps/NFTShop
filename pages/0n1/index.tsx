@@ -100,7 +100,8 @@ export default function Home() {
                     <li className="mr-2">
                         <a 
                             href="/0n1/custom_nano"
-                            className={determineTabColor("nanoSuit")}
+                            onClick={(e) => handleTabChange(e, "nanoSuit")}
+                            className={determineTabColor("customNano")}
                             aria-current="page">
                             Custom Nano Suit
                             </a>

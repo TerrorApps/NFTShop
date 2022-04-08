@@ -27,12 +27,13 @@ export default async function handler(
     res.status(400).end()
 } else {
     // var fileName = `${tmpdir}/0n1_phonescreen_${tokenId}.png`
-    var fileName = `azuki/azuki_phonescreen_${req.query["tokenId"]}.png`
+    var fileName = `0n1_frames/frame_phonescreen_${req.query["tokenId"]}.png`
 
-    var imageUrl = `http://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`
+    //var imageUrl = `http://ipfs.io/ipfs/QmcoavNZq2jyZGe2Zi4nanQqzU9hRPxunHAo8pgYZ5fSep/${tokenId}.png`
+    var imageUrl = `https://storage.googleapis.com/frames-nanohub/${tokenId}.png`
     var removeLeadingZero = +tokenId    
-    var traitsRes = await fetch(`https://ipfs.io/ipfs/QmXgSuLPGuxxRuAana7JdoWmaS25oAcXv3x2pYMN9kVfg3/${removeLeadingZero}`)
-    var traitsData = await traitsRes.json()
+    // var traitsRes = await fetch(`https://ipfs.io/ipfs/QmXgSuLPGuxxRuAana7JdoWmaS25oAcXv3x2pYMN9kVfg3/${removeLeadingZero}`)
+    // var traitsData = await traitsRes.json()
     console.log("image url")
     console.log(imageUrl)
     var input = await axios(
@@ -46,7 +47,7 @@ export default async function handler(
       height: 585,
     }).toBuffer()
     console.log("getting logo")
-    var logoFilePath = path.resolve('.', 'assets/0N1_logo_grey.svg')
+    var logoFilePath = path.resolve('.', 'assets/0n1frames-logo.png')
     var logo = await sharp(logoFilePath).resize({
       fit: sharp.fit.contain,
       width: 275,
@@ -54,11 +55,11 @@ export default async function handler(
     })
     .png().toBuffer()
     console.log("getting banner")
-    var bannerFilePath = path.resolve('.', 'assets/0n1-banner-overlay.png')
-    var banner = await sharp(bannerFilePath).resize({
-      fit: sharp.fit.contain,
-      width: 585
-    }).png().toBuffer()
+    // var bannerFilePath = path.resolve('.', 'assets/0n1-banner-overlay.png')
+    // var banner = await sharp(bannerFilePath).resize({
+    //   fit: sharp.fit.contain,
+    //   width: 585
+    // }).png().toBuffer()
     console.log("getting background color")
     await Jimp.read(buffer, async function (err, image) {
       var hex = image.getPixelColor(1, 1)
@@ -81,10 +82,10 @@ export default async function handler(
         top: 325,
         left: 150
       },
-      {
-        input: banner,
-        gravity: "south"
-      }
+      // {
+      //   input: banner,
+      //   gravity: "south"
+      // }
       ]).png().toFile(fileName)
 
       

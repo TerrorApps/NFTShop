@@ -55,6 +55,15 @@ export default function Home() {
                         fileName="nano_suit"
                     />
                 )
+            case 'framePhone':
+                return (
+                    <PhoneScreenListNoSSR
+                        name="frame"
+                        floor={1}
+                        ceiling={7777}
+                        cid="QmVfcwdYrN7QXByqM1VJbQRbL6XabXkitTtNs95SfGTtC3"
+                    />
+                )
         }
     }
 
@@ -77,6 +86,14 @@ export default function Home() {
                             onClick={(e) => handleTabChange(e, "phonescreen")}
                             className={determineTabColor("phonescreen")}>
                             Phone
+                        </a>
+                    </li>
+                    <li className="mr-2">
+                        <a
+                            href="#framePhone"
+                            onClick={(e) => handleTabChange(e, "framePhone")}
+                            className={determineTabColor("framePhone")}>
+                            Frame Phone
                         </a>
                     </li>
                     <li className="mr-2">

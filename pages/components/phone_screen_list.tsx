@@ -32,6 +32,10 @@ export default function PhoneScreenList(props: PhoneScreenList) {
         return `https://regentool.mypinata.cloud/ipfs/${props.cid}/${props.name}_phonescreen_${src}`
     }
 
+    const myFrameLoader = ({ src, width, quality }: ImageLoaderProps) => {
+        return `https://regentool.mypinata.cloud/ipfs/QmVfcwdYrN7QXByqM1VJbQRbL6XabXkitTtNs95SfGTtC3/frame_phonescreen_${src}`
+    }
+
     return (
         <main className="max-w-11xl mx-auto px-4 sm:px-6 lg:px-8 pt-6">
             <div className="flex justify-center">
@@ -72,22 +76,40 @@ export default function PhoneScreenList(props: PhoneScreenList) {
                        : 
                        tokenIds.map((id) => {
                             return(
-                            <a 
-                                key={id}
-                                onClick={() => {updateModal(true, id + props.floor)}}
-                                className="group cursor-pointer fade-in text-sm lg:-20  duration-300">
-                                <div className="w-full fade-in lg:group-hover:scale-105 group-hover:shadow-me duration-300 rounded-xl aspect-w-1 aspect-h-1 overflow-hidden bg-gray-100 shadow-me animate-fade-in-down">
-                                    <Image
-                                        loader={myLoader}
-                                        src={`${id + props.floor}.png`}
-                                        alt=""
-                                        className=" duration-300 w-full h-full object-center object-cover fade-in"
-                                        width="585"
-                                        height="1266"
-                                        loading="lazy"
-                                    />
-                                </div>
-                            </a>
+                            <>
+                                <a 
+                                    key={id}
+                                    onClick={() => {updateModal(true, id + props.floor)}}
+                                    className="group cursor-pointer fade-in text-sm lg:-20  duration-300">
+                                    <div className="w-full fade-in lg:group-hover:scale-105 group-hover:shadow-me duration-300 rounded-xl aspect-w-1 aspect-h-1 overflow-hidden bg-gray-100 shadow-me animate-fade-in-down">
+                                        <Image
+                                            loader={myLoader}
+                                            src={`${id + props.floor}.png`}
+                                            alt=""
+                                            className=" duration-300 w-full h-full object-center object-cover fade-in"
+                                            width="585"
+                                            height="1266"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                <a 
+                                    key={`${id}_frame`}
+                                    onClick={() => {updateModal(true, id + props.floor)}}
+                                    className="group cursor-pointer fade-in text-sm lg:-20  duration-300">
+                                    <div className="w-full fade-in lg:group-hover:scale-105 group-hover:shadow-me duration-300 rounded-xl aspect-w-1 aspect-h-1 overflow-hidden bg-gray-100 shadow-me animate-fade-in-down">
+                                        <Image
+                                            loader={myFrameLoader}
+                                            src={`${id + props.floor}.png`}
+                                            alt=""
+                                            className=" duration-300 w-full h-full object-center object-cover fade-in"
+                                            width="585"
+                                            height="1266"
+                                            loading="lazy"
+                                        />
+                                    </div>
+                                </a>
+                                </a>
+                            </>
                             )
                         })
                     }

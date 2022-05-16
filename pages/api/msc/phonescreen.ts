@@ -20,35 +20,35 @@ export default async function handler(
     var fileName = `${tmpdir}/0n1_phonescreen_${tokenId}.png`
     // var fileName = `azuki/azuki_phonescreen_${req.query["tokenId"]}.png`
 
-    // var imageUrl = `http://ipfs.io/ipfs/QmXU7jJXCpkeyi2dN5im4CvnJFRJqgzko77cri1uwpxMLe/${tokenId}.png`
-    // console.log("image url")
-    // console.log(imageUrl)
-    // var input = await axios(
-    //     {url: imageUrl,
-    //     responseType: "arraybuffer"})
+    var imageUrl = `https://msc.mypinata.cloud/ipfs/Qmc3AyXom767y4BxvpZHhwTFtLxWsdHMjTHxSeXsX8XBsb/${tokenId}.gif`
+    console.log("image url")
+    console.log(imageUrl)
+    var input = await axios(
+        {url: imageUrl,
+        responseType: "arraybuffer"})
 
-    // var buffer = input.data as Buffer
-    // var oni = await sharp(buffer).resize({
+    var buffer = input.data as Buffer
+    var oni = await sharp(buffer).resize({
     //   fit: sharp.fit.contain,
-    //   width: 585,
-    //   height: 585,
-    // }).toBuffer()
-    console.log("getting logo")
-    console.log("getting banner")
-    var bannerFilePath = path.resolve('.', 'assets/aidenz.png')
-    var banner = await sharp(bannerFilePath).resize({
-      fit: sharp.fit.contain,
-      width: 585
-    }).png().toBuffer()
+      width: 585,
+      height: 585,
+    }).toBuffer()
+    // console.log("getting logo")
+    // console.log("getting banner")
+    // var bannerFilePath = path.resolve('.', 'assets/msc_banner.png')
+    // var banner = await sharp(bannerFilePath).resize({
+    //   fit: sharp.fit.contain,
+    //   width: 585
+    // }).png().toBuffer()
     console.log("getting background color")
-    await Jimp.read(banner, async function (err, image) {
+    await Jimp.read(buffer, async function (err, image) {
       var hex = image.getPixelColor(1, 1)
       var rgb = Jimp.intToRGBA(hex)
-      var logoFilePath = path.resolve('.', 'assets/aidenz_logo.png')
+      var logoFilePath = path.resolve('.', 'assets/msc_logo.png')
       var logo = await sharp(logoFilePath).resize({
         fit: sharp.fit.contain,
-        width: 500,
-        height: 500,
+        width: 400,
+        height: 400,
         background: { r: rgb.r, g: rgb.g, b: rgb.b, alpha: 0 }
       })
       .png().toBuffer()
@@ -61,18 +61,19 @@ export default async function handler(
         }
       }).png()
       .composite([{
-        input: banner,
-        top: 735,
+        input: oni,
+        top: 681,
         left: 0,
       },
       {
         input: logo,
         top: 200,
-        left: 50
+        left: 100 
       },
     //   {
     //     input: banner,
-    //     gravity: "south"
+    //     top: 350,
+    //     left: 0
     //   }
       ]).png().toFile(fileName)
 

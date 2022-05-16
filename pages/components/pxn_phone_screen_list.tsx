@@ -28,7 +28,7 @@ export default function PhoneScreenList(props: PhoneScreenList) {
     }
 
     const myLoader = ({ src, width, quality }: ImageLoaderProps) => {
-        return `https://regentool.mypinata.cloud/ipfs/${props.cid}/${props.name}_phonescreen_${src}`
+        return `https://regentool.mypinata.cloud/ipfs/${props.cid}/phonescreen_${src}`
     }
 
     return (
@@ -93,12 +93,6 @@ export default function PhoneScreenList(props: PhoneScreenList) {
                     </div>
                 </div>
             </div>
-            {showModal && <PhoneScreenModal
-                updateModal={updateModal}
-                tokenId={modalTokenId}
-                cid={props.cid}
-                name={props.name}
-            />}
         </main>
     )
 }

@@ -5,7 +5,11 @@ import { useRouter } from 'next/router'
 import dynamic from 'next/dynamic'
 import { render } from '@headlessui/react/dist/utils/render'
 
-const PhoneScreenListNoSSR = dynamic(() => import('../../components/akyllers_phone_screen_list'), {
+const PhoneScreenListNoSSR = dynamic(() => import('../components/akyllers_phone_screen_list'), {
+    ssr: false
+})
+
+const BannerListNoSSR = dynamic(() => import('../components/akyllers_banner_list'), {
     ssr: false
 })
 
@@ -30,7 +34,12 @@ export default function Home() {
         switch (currentTab) {
             case 'banner':
                 return (
-                    <div></div>
+                    <BannerListNoSSR
+                        name="akyller"
+                        floor={1}
+                        ceiling={4444}
+                        cid="QmPaPyHWNcofX1uc6MzjfY4xbSNebF2mGEJ7acJheU8zmt"
+                    />
                 )
             case 'phonescreen':
                 return (

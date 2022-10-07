@@ -33,27 +33,6 @@ export default async function handler(
     var background = resJson["attributes"].find((data: { "trait_type": string }) => data.trait_type == "Background").value
     console.log(`background: ${background}`)
     var background_logo = 'black_white_logo.png'
-    if (background == "OffWhite") {
-        background_logo = 'black_logo.png'
-    }
-    if (background == "Light Tyrian") {
-        background_logo = 'black_logo.png'
-    }
-    if (background == "Crimson") {
-        background_logo = 'black_white_logo.png'
-    }
-    if (background == "Tyrian") {
-        background_logo = 'black_logo.png'
-    }
-    if (background == "Grey") {
-        background_logo = 'black_white_logo.png'
-    }
-    if (background == "Yellow") {
-        background_logo = 'black_logo.png'
-    }
-    if (background == "Nyx") {
-        background_logo = 'black_white_logo.png'
-    }
 
     await Jimp.read(imageUrl, async function (err, image) {
       var hex = image.getPixelColor(1, 1)

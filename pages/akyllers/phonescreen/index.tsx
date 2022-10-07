@@ -58,9 +58,9 @@ export default function Home() {
                     </li>
                     <li className="mr-2">
                         <a
-                            href="#framePhone"
+                            href="#banner"
                             onClick={(e) => handleTabChange(e, "banner")}
-                            className={determineTabColor("framePhone")}>
+                            className={determineTabColor("banner")}>
                             Banner
                         </a>
                     </li>

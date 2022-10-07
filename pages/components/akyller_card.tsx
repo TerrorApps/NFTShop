@@ -1,6 +1,6 @@
 export default function AkyllerCard() {
     return (
-        <a href="/akyllers/phonescreen" className="rounded overflow-hidden shadow-lg">
+        <a href="/akyllers" className="rounded overflow-hidden shadow-lg">
         <img className="w-full" src="./home/akyllers_home.png" alt="Forest" />
         <div className="px-6 py-4">
           <div className="font-bold text-xl mb-2">Akyllers</div>

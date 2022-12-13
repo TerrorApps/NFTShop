@@ -61,7 +61,7 @@ export default async function handler(
     // }).png().toBuffer()
     console.log("getting background color")
     await Jimp.read(buffer, async function (err, image) {
-      var hex = image.getPixelColor(1, 1)
+      var hex = image.getPixelColor(300, 1)
       var rgb = Jimp.intToRGBA(hex)
       await sharp({
         create: {

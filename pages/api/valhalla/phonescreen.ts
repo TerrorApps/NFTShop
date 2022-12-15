@@ -17,11 +17,6 @@ export default async function handler(
 ) {
   sharp.cache(false);
   var tokenId = req.query["tokenId"]
-  if (tokenId.length < 4) {
-    for (let i = tokenId.length; i < 4; i++) {
-      tokenId = "0" + tokenId
-    }
-  }
   if (Number(tokenId) > 9000 || Number(tokenId) < 1) {
     console.log("its invalid")
     res.status(400).end()
